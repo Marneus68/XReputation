@@ -1,0 +1,15 @@
+ input{
+    height:61px !important;
+    font-weight: bold;
+    font-size: large;
+}
+
+.logo > div{
+    vertical-align: middle;
+    text-align:center;
+    margin:40px 0px 40px 0px;
+}
+
+.infos form{
+    padding-left:6%;
+}
