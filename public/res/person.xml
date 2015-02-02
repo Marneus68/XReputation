@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<user>
+<firstName/>
+<lastName/>
+<link ID="1" name="twitter">http://lider-ci.org/</link>
+<link ID="2" name="facebook">https://www.facebook</link>
+<link ID="3">https://www.facebook</link>
+<redirects>
+<redirect reputation="OK" target="1">http://en.wikipedia.org/wiki/Mamadou_Koulibaly</redirect>
+<redirect reputation="OK" target="1">http://en.wikipedia.org/wiki/Mamadou_Koulibaly</redirect>
+<redirect reputation="OK" target="1">https://www.facebook.com/public/Mamadou-Coulibaly</redirect>
+</redirects>
+</user>

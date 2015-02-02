@@ -14,5 +14,6 @@ libraryDependencies ++= Seq(
   "org.webjars" % "bootstrap" % "3.3.1",
   "org.webjars" % "jquery" % "2.1.3",
   "org.webjars" % "font-awesome" % "4.2.0",
-  "org.webjars" % "angularjs" % "1.3.8"
+  "org.webjars" % "angularjs" % "1.3.8",
+  "com.google.code.gson" % "gson" % "2.2"
 )
