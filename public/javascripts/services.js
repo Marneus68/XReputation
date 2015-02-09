@@ -10,19 +10,26 @@ angular.module('XR.services', ['ngResource'])
 
     // put people model in cy.js
     var eles = [];
-    /*
-    for( var i = 0; i < people.length; i++ ){
-      eles.push({group: 'nodes', data: { id: people[i].id,  weight: people[i].weight, name: people[i].name, faveShape:'rectangle' }, classes:'ok'});
-    }
-    */
+    var links = people.links.concat(people.redirects);
+    console.log(links);
 
-      eles.push({group: 'nodes', data: { id: people[0].id,  weight: people[0].weight, name: people[0].name, faveShape:'circle' }, classes:'root'});
+    for( var i = 0; i < links.length; i++ ){
+      eles.push({group: 'nodes', data: { id: links[i].value,  weight: 100, name: links[i].value, faveShape:'rectangle' }, classes:'ok'});
+    }
+
+    var redirects =  people.redirects;
+      var target = {"1":people.links[0].value, "2":people.links[1].value, "3":people.links[2].value};
+    for(var i = 0; i < redirects.length; i++){
+      eles.push({group: 'edges', data: {source:redirects[i].value, target:target[redirects[i].id] }});
+    }
+
+/*
       eles.push({group: 'nodes', data: { id: people[1].id,  weight: people[1].weight, name: people[1].name, faveShape:'circle' }, classes:'ok'});
       eles.push({group: 'nodes', data: { id: people[2].id,  weight: people[2].weight, name: people[2].name, faveShape:'circle' }, classes:'ko'});
 
 
-eles.push({group: 'edges', data: {source:people[1].id,target:people[0].id }});
 eles.push({group: 'edges', data: {source:people[2].id,target:people[0].id }});
+*/
 
 
 

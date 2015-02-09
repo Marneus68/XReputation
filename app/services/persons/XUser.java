@@ -2,10 +2,15 @@ package services.persons;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.ErrorHandler;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-
+import org.xml.sax.SAXParseException;
+import play.api.libs.json.JsArray;
+import play.api.libs.json.JsValue;
+import play.api.libs.json.Json;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -53,30 +58,44 @@ public class XUser {
         }
     }
 
-    public Document stringToDoc(String xml) throws ParserConfigurationException {
-
-        DocumentBuilderFactory factory1 = DocumentBuilderFactory.newInstance();
-
-        DocumentBuilder dbB = null;
-        try {
-            dbB = factory1.newDocumentBuilder();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-            return null;
+    public String jsonUser(){
+        StringBuilder jsonString = new StringBuilder("{");
+        jsonString.append(" \"firstName\" : \""+ doc.getElementsByTagName("firstName").item(0).getTextContent()+"\",");
+        jsonString.append(" \"lastName\" : \""+ doc.getElementsByTagName("lastName").item(0).getTextContent()+"\" ,");
+        jsonString.append(" \"links\" :[");
+        NodeList userLinks = doc.getElementsByTagName("link");
+        int linksArrayLenght = userLinks.getLength();
+        for(int i = 0; i < linksArrayLenght; i++ ){
+            Node curLink = userLinks.item(i);
+            jsonString.append(  "{  \"id\" : \""+((Element) curLink).getAttribute("ID")+"\" ,");
+            jsonString.append(  "   \"source\" : \""+((Element) curLink).getAttribute("name")+"\" ,");
+            jsonString.append(  "  \"value\" : \""+curLink.getTextContent()+"\" }");
+            if(i != linksArrayLenght-1){
+                jsonString.append(",");
+            }
         }
-        try {
-            Document html =  dbB.parse(new InputSource(new StringReader(xml)));
-            return  html;
-        } catch (SAXException e) {
-            System.out.println("Parsing error"+e.getMessage());
-            return null;
-        } catch (IOException e) {
-            System.out.println("Parsing error"+e.getMessage());
-            return null;
+        jsonString.append("],");
+
+        jsonString.append(" \"redirects\" :[");
+        NodeList redirectLinks = redirects.getElementsByTagName("redirect");
+        int redirectsArrayLenght = redirectLinks.getLength();
+        for(int i = 0; i < redirectsArrayLenght; i++ ){
+            Node curLink = redirectLinks.item(i);
+            jsonString.append(  "{ \"target\" : \""+((Element) curLink).getAttribute("target")+"\" ,");
+            jsonString.append(  "   \"OK\" : \""+((Element) curLink).getAttribute("reputation")+"\" ,");
+            jsonString.append(  "   \"id\" : \""+((Element) curLink).getAttribute("target")+"\" ,");
+            jsonString.append(  "   \"value\" : \""+curLink.getTextContent()+"\" }");
+            if(i != redirectsArrayLenght-1){
+                jsonString.append(",");
+            }
         }
+        jsonString.append("]");
 
+        jsonString.append("}");
+        System.out.println("json is: "+ jsonString);
+        JsValue userJson = Json.parse(jsonString.toString());
 
-
+        return jsonString.toString();
     }
     public  void saveBasicAttrToDom(){
         Element root = doc.createElement("user");
@@ -99,7 +118,8 @@ public class XUser {
         Element facebookL = doc.createElement("link");
         facebookL.setTextContent(facebook);
         facebookL.setAttribute("ID", "3");
-        linkedinL.setAttribute("name", "facebook");
+        facebookL.setAttribute("name", "facebook");
+
         root.appendChild(fName);
         root.appendChild(lName);
         root.appendChild(twitterL);

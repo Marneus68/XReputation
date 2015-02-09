@@ -15,5 +15,6 @@ libraryDependencies ++= Seq(
   "org.webjars" % "jquery" % "2.1.3",
   "org.webjars" % "font-awesome" % "4.2.0",
   "org.webjars" % "angularjs" % "1.3.8",
-  "com.google.code.gson" % "gson" % "2.2"
+  "com.google.code.gson" % "gson" % "2.2",
+  "org.jsoup" % "jsoup" % "1.7.2"
 )

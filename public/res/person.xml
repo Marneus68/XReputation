@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <user>
-<firstName/>
-<lastName/>
-<link ID="1" name="twitter">http://lider-ci.org/</link>
-<link ID="2" name="facebook">https://www.facebook</link>
-<link ID="3">https://www.facebook</link>
+<firstName>coulibaly</firstName>
+<lastName>mamadou</lastName>
+<link ID="1" name="twitter">fr-fr.facebook.com/pages/Mamadou-COULIBALY/</link>
+<link ID="2" name="linkedin">www.linkedin.com/pub/dir/</link>
+<link ID="3" name="facebook">fr-fr.facebook.com/pages/Mamadou-COULIBALY/</link>
 <redirects>
-<redirect reputation="OK" target="1">http://en.wikipedia.org/wiki/Mamadou_Koulibaly</redirect>
-<redirect reputation="OK" target="1">http://en.wikipedia.org/wiki/Mamadou_Koulibaly</redirect>
-<redirect reputation="OK" target="1">https://www.facebook.com/public/Mamadou-Coulibaly</redirect>
+<redirect reputation="OK" target="2">https://www.linkedin.com/pub/dir/Mamadou/Coulibaly</redirect>
+<redirect reputation="OK" target="2">https://www.linkedin.com/pub/mamadou-coulibaly/53/583/471</redirect>
+<redirect reputation="OK" target="2">https://www.linkedin.com/pub/mamadou-coulibaly/49/23/928</redirect>
 </redirects>
 </user>

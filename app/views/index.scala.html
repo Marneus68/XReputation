@@ -3,57 +3,59 @@
 @main("Welcome to Play") {
 
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">Fill the form</h3>
-    </div>
-    <div class="row logo">
-        <div class="col col-md-100">
-            <i class="fa fa-user fa-4x center "></i>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Fill the form</h3>
         </div>
-    </div>
-    <div class="panel-body infos">
-        <div class="col col-100">
-            <form class="form-horizontal" no-validate>
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-md-1 control-label"><i class="fa fa-pencil-square-o fa-3x"></i></label>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control"  ng-model="data.firstName"   id="firstName" placeholder="First Name">
+        <div class="row logo">
+            <div class="col col-md-100">
+                <i class="fa fa-user fa-4x center "></i>
+            </div>
+        </div>
+        <div class="panel-body infos">
+            <div class="col col-100">
+                <form class="form-horizontal" no-validate>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-md-1 control-label"><i class="fa fa-pencil-square-o fa-3x"></i></label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control"  ng-model="data.firstName"   id="firstName" placeholder="First Name">
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-md-1 control-label"><i class="fa fa-pencil-square-o fa-3x"></i></label>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control"  ng-model="data.lastName" id="lastName" placeholder="Last Name">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-md-1 control-label"><i class="fa fa-pencil-square-o fa-3x"></i></label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control"  ng-model="data.lastName" id="lastName" placeholder="Last Name">
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-md-1 control-label"><i class="fa fa-twitter fa-3x"></i></label>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" ng-model="data.twitter" id="inputEmail3" placeholder="Enter your twitter link">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-md-1 control-label"><i class="fa fa-twitter fa-3x"></i></label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" ng-model="data.twitter" id="inputEmail3" placeholder="Enter your twitter link">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword3" class="col-md-1  control-label"><i class="fa fa-facebook fa-3x"></i></label>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" ng-model="data.facebook" id="inputPassword3" placeholder="Enter your facebook link">
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-md-1  control-label"><i class="fa fa-facebook fa-3x"></i></label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" ng-model="data.facebook" id="inputPassword3" placeholder="Enter your facebook link">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword3" class="col-md-1 control-label"><i class="fa fa-linkedin fa-3x"></i></label>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" ng-model="data.linkedin" id="inputPassword3" placeholder="Enter your linkedin link">
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-md-1 control-label"><i class="fa fa-linkedin fa-3x"></i></label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" ng-model="data.linkedin" id="inputPassword3" placeholder="Enter your linkedin link">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-1 col-sm-10">
-                        <button ng-click="getReputation(data)" class="btn btn-default">Search</button>
+                    <div class="form-group">
+                        <div class="col-sm-offset-1 col-sm-10">
+                            <button ng-click="getReputation(data)" class="btn btn-default">Search</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
 
+            </div>
         </div>
     </div>
 </div>
@@ -70,8 +72,8 @@
     <div class="panel-body infos">
         <h1  style="text-align:center;"> Reputation </h1>
         <div style="text-align:center;"><p>{{reputation}}<p></p></div>
-        <div ng-controller="PeopleCtrl" class="graph" >
-        <div id="cy"></div>
+        <div class="graph" >
+            <div id="cy"></div>
         </div>
     </div>
 </div>
