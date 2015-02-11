@@ -7,9 +7,6 @@ angular.module('XR.controllers', ['XR.services'])
 
     var successCallback = function(data){
     console.log("data is ", data);
-        $scope.reputation = JSON.stringify(data);
-        console.log("data is ", data);
-        $scope.reputation = JSON.stringify(data);
         $scope.people.links = data.links;
         $scope.people.redirects = data.redirects;
         console.log("peopleGraph");

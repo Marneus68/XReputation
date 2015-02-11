@@ -1,10 +1,6 @@
 package services.crawlers;
-import java.lang.Iterable;
 import java.lang.String;
-
-import akka.dispatch.Mapper;
-import akka.dispatch.OnSuccess;
-import com.fasterxml.jackson.databind.JsonNode;
+import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -22,19 +18,19 @@ public class GoogleSearcher {
      * Later implement async version
      */
 
-    public static  F.Function<WSResponse, JsonNode> SearchOnGoogle(XUser curUser){
-        return new F.Function<WSResponse, JsonNode>(){
+    public static  F.Function<WSResponse, List<String>> SearchOnGoogle(XUser curUser){
+        return new F.Function<WSResponse, List<String>>(){
             @Override
-            public JsonNode apply(WSResponse response) throws Throwable {
-                return response.asJson();
+            public List<String> apply(WSResponse response) throws Throwable {
+                return response.asJson().findValuesAsText("url");
             }
         };
     }
 
-    public static F.Function<WSResponse, JsonNode> parseHtml(String htmlUrl, XUser curUser, JsonNode nodeIn){
-        return new F.Function<WSResponse, JsonNode>(){
+    public static F.Function<WSResponse, String> parseHtml(String htmlUrl, XUser curUser){
+        return new F.Function<WSResponse, String>(){
             @Override
-            public JsonNode apply(WSResponse response) throws Throwable {
+            public String apply(WSResponse response) throws Throwable {
                 org.jsoup.nodes.Document html = Jsoup.parse(response.getBody());
                 String fb = curUser.facebook;
                 String tw = curUser.twitter;
@@ -63,8 +59,7 @@ public class GoogleSearcher {
                         isSetFb = true;
                     }
                 }
-                curUser.saveDomToXml();
-                return nodeIn;
+                return "GoogleParseDone";
             }
         };
     }

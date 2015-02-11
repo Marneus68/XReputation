@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <user>
-<firstName>coulibaly</firstName>
-<lastName>mamadou</lastName>
-<link ID="1" name="twitter">fr-fr.facebook.com/pages/Mamadou-COULIBALY/</link>
-<link ID="2" name="linkedin">www.linkedin.com/pub/dir/</link>
-<link ID="3" name="facebook">fr-fr.facebook.com/pages/Mamadou-COULIBALY/</link>
+<firstName>nicolas</firstName>
+<lastName>sarkozy</lastName>
+<link ID="1" name="twitter">@hugopoi</link>
+<link ID="2" name="linkedin">linkedin.com/nicolassarkozy</link>
+<link ID="3" name="facebook">facebook.com/nicolassarkozy</link>
 <redirects>
-<redirect reputation="OK" target="2">https://www.linkedin.com/pub/mamadou-coulibaly/53/583/471</redirect>
-<redirect reputation="OK" target="2">https://www.linkedin.com/pub/mamadou-coulibaly/53/583/471</redirect>
-<redirect reputation="OK" target="2">https://www.linkedin.com/pub/dir/Mamadou/Coulibaly</redirect>
-<redirect reputation="OK" target="2">https://www.linkedin.com/pub/mamadou-coulibaly/49/23/928</redirect>
+<redirect reputation="OK" target="3">http://en.wikipedia.org/wiki/Nicolas_Sarkozy</redirect>
+<redirect reputation="OK" target="1">/HugoPoi</redirect>
+<redirect reputation="OK" target="1">/HugoPoi/status/537180916368805888</redirect>
+<redirect reputation="OK" target="1">/hashtag/EDF?src=hash</redirect>
+<redirect reputation="OK" target="1">/DonneMoi1Cadeau</redirect>
+<redirect reputation="OK" target="1">/DonneMoi1Cadeau/status/536123704284311552</redirect>
+<redirect reputation="OK" target="1">/HugoPoi</redirect>
+<redirect reputation="OK" target="1">//twitter.com/DonneMoi1Cadeau/status/536123704284311552/photo/1</redirect>
+<redirect reputation="OK" target="1">/DonneMoi1Cadeau/status/536123704284311552</redirect>
+<redirect reputation="OK" target="1">/DonneMoi1Cadeau/status/536123704284311552</redirect>
+<redirect reputation="OK" target="1">/HugoPoi</redirect>
+<redirect reputation="OK" target="1">/HugoPoi/status/536122505543823360</redirect>
+<redirect reputation="OK" target="1">/hashtag/hadopi?src=hash</redirect>
+<redirect reputation="OK" target="1">/hashtag/test?src=hash</redirect>
+<redirect reputation="OK" target="1">/search?f=realtime&amp;q=%40hugopoi</redirect>
+<redirect reputation="OK" target="1">//dev.twitter.com/docs/embedded-tweets</redirect>
+<redirect reputation="OK" target="1">//dev.twitter.com/docs/embedded-tweets</redirect>
+<redirect reputation="OK" target="1">/login</redirect>
 </redirects>
 </user>
