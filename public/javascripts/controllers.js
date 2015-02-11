@@ -21,6 +21,9 @@ angular.module('XR.controllers', ['XR.services'])
     };
 
     $scope.getReputation = function(data){
+        data.twitter = data.twitter === undefined? " ": data.twitter;
+        data.facebook = data.facebook === undefined? " ": data.facebook;
+        data.linkedin = data.linkedin === undefined? " ": data.linkedin;
         Reputation.save(data,successCallback, errorCallback);
      };
 });
