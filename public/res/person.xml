@@ -1,47 +1,46 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<?xml version="1.0" encoding="utf-8"?>
 <user>
-<firstName>nicolas</firstName>
-<lastName>sarkozy</lastName>
-<link ID="1" name="twitter">@nicolassarkozy</link>
-<link ID="2" name="linkedin">linkedin.com/nicolassarkozy</link>
-<link ID="3" name="facebook">facebook.com/nicolassarkozy</link>
-<redirects>
-<redirect reputation="OK" target="3">http://en.wikipedia.org/wiki/Nicolas_Sarkozy</redirect>
-<redirect reputation="OK" target="1">/nathanou</redirect>
-<redirect reputation="OK" target="1">/nathanou/status/565242798337966083</redirect>
-<redirect reputation="OK" target="1">/NicolasSarkozy</redirect>
-<redirect reputation="OK" target="1">/nathanou/status/565242798337966083</redirect>
-<redirect reputation="OK" target="1">/Vanneur</redirect>
-<redirect reputation="OK" target="1">/Vanneur/status/565232994475311104</redirect>
-<redirect reputation="OK" target="1">//twitter.com/Vanneur/status/565232994475311104/photo/1</redirect>
-<redirect reputation="OK" target="1">/Vanneur/status/565232994475311104</redirect>
-<redirect reputation="OK" target="1">/Vanneur/status/565232994475311104</redirect>
-<redirect reputation="OK" target="1">/La_Polisse</redirect>
-<redirect reputation="OK" target="1">/La_Polisse/status/565222906335342592</redirect>
-<redirect reputation="OK" target="1">/NicolasSarkozy</redirect>
-<redirect reputation="OK" target="1">/hashtag/Tiki?src=hash</redirect>
-<redirect reputation="OK" target="1">//twitter.com/La_Polisse/status/565222906335342592/photo/1</redirect>
-<redirect reputation="OK" target="1">/La_Polisse/status/565222906335342592</redirect>
-<redirect reputation="OK" target="1">/La_Polisse/status/565222906335342592</redirect>
-<redirect reputation="OK" target="1">/publicsenat</redirect>
-<redirect reputation="OK" target="1">/publicsenat/status/565220418026741760</redirect>
-<redirect reputation="OK" target="1">/publicsenat/status/565220418026741760</redirect>
-<redirect reputation="OK" target="1">/BrunoMasure</redirect>
-<redirect reputation="OK" target="1">/BrunoMasure/status/565192449354907649</redirect>
-<redirect reputation="OK" target="1">/hashtag/SwissLeaks?src=hash</redirect>
-<redirect reputation="OK" target="1">/NicolasSarkozy</redirect>
-<redirect reputation="OK" target="1">/gadelmaleh</redirect>
-<redirect reputation="OK" target="1">/Le_Scan</redirect>
-<redirect reputation="OK" target="1">/Le_Scan/status/565155033550188544</redirect>
-<redirect reputation="OK" target="1">/NicolasSarkozy</redirect>
-<redirect reputation="OK" target="1">//twitter.com/Le_Scan/status/565155033550188544/photo/1</redirect>
-<redirect reputation="OK" target="1">/Le_Scan/status/565155033550188544</redirect>
-<redirect reputation="OK" target="1">/Le_Scan/status/565155033550188544</redirect>
-<redirect reputation="OK" target="1">/hashtag/cnump?src=rela</redirect>
-<redirect reputation="OK" target="1">/search?q=%40ump&amp;src=rela</redirect>
-<redirect reputation="OK" target="1">/search?f=realtime&amp;q=%40nicolassarkozy</redirect>
-<redirect reputation="OK" target="1">//dev.twitter.com/docs/embedded-tweets</redirect>
-<redirect reputation="OK" target="1">//dev.twitter.com/docs/embedded-tweets</redirect>
-<redirect reputation="OK" target="1">/login</redirect>
-</redirects>
+   <firstName>nicolas</firstName>
+   <lastName>sarkozy</lastName>
+   <link ID="1" name="twitter">@hugopoi</link>
+   <link ID="2" name="linkedin">linkedin.com/nicolassarkozy</link>
+   <link ID="3" name="facebook">facebook.com/nicolassarkozy</link>
+   <redirects>
+      <redirect reputation="OK" target="3">http://en.wikipedia.org/wiki/Nicolas_Sarkozy</redirect>
+      <redirect reputation="OK" target="1">/HugoPoi</redirect>
+      <redirect reputation="OK" target="1">/SFR_SAV/status/565603573837598720</redirect>
+      <redirect reputation="OK" target="1">/SFR_SAV/status/565603573837598720</redirect>
+      <redirect reputation="OK" target="1">/SFR_SAV/status/565603542246096896</redirect>
+      <redirect reputation="OK" target="1">/SFR_SAV/status/565603542246096896</redirect>
+      <redirect reputation="OK" target="1">/HugoPoi</redirect>
+      <redirect reputation="OK" target="1">/HugoPoi/status/565586621949829120</redirect>
+      <redirect reputation="OK" target="1">/HugoPoi/status/565452917382344704</redirect>
+      <redirect reputation="OK" target="1">/HugoPoi/status/565452917382344704</redirect>
+      <redirect reputation="OK" target="1">/HugoPoi/status/565182688756510721</redirect>
+      <redirect reputation="OK" target="1">/HugoPoi/status/565182688756510721</redirect>
+      <redirect reputation="OK" target="1">/HugoPoi/status/565128078763233281</redirect>
+      <redirect reputation="OK" target="1">/HugoPoi/status/565126707360067584</redirect>
+      <redirect reputation="OK" target="1">/HugoPoi/status/565120402641657856</redirect>
+      <redirect reputation="OK" target="1">/HugoPoi/status/564863399587504128</redirect>
+      <redirect reputation="OK" target="1">/HugoPoi/status/564863399587504128</redirect>
+      <redirect reputation="OK" target="1">/HugoPoi/status/563995992878743552</redirect>
+      <redirect reputation="OK" target="1">/HugoPoi/status/563995992878743552</redirect>
+      <redirect reputation="OK" target="1">/SFR_SAV/status/563711175654133760</redirect>
+      <redirect reputation="OK" target="1">/SFR_SAV/status/563711175654133760</redirect>
+      <redirect reputation="OK" target="1">/HugoPoi/status/563643445567586304</redirect>
+      <redirect reputation="OK" target="1">/HugoPoi/status/563643445567586304</redirect>
+      <redirect reputation="OK" target="1">/HugoPoi/status/563643039961583616</redirect>
+      <redirect reputation="OK" target="1">/HugoPoi/status/563643039961583616</redirect>
+      <redirect reputation="OK" target="1">/Aratta/status/562891434244993024</redirect>
+      <redirect reputation="OK" target="1">/Aratta/status/562891434244993024</redirect>
+      <redirect reputation="OK" target="1">/Aratta/status/562656865117802497</redirect>
+      <redirect reputation="OK" target="1">/Aratta/status/562656865117802497</redirect>
+      <redirect reputation="OK" target="1">/Toximityx/status/555301868021489665</redirect>
+      <redirect reputation="OK" target="1">/Toximityx/status/555301868021489665</redirect>
+      <redirect reputation="OK" target="1">/Toximityx/status/555297267562078208</redirect>
+      <redirect reputation="OK" target="1">/HugoPoi</redirect>
+      <redirect reputation="OK" target="1">/DonneMoi1Cadeau</redirect>
+      <redirect reputation="OK" target="1">/HugoPoi</redirect>
+      <redirect reputation="OK" target="1">/DonneMoi1Cadeau/status/536123704284311552</redirect>
+   </redirects>
 </user>
