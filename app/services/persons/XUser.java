@@ -92,7 +92,6 @@ public class XUser {
         jsonString.append("]");
 
         jsonString.append("}");
-        System.out.println("json is: "+ jsonString);
         JsValue userJson = Json.parse(jsonString.toString());
 
         return jsonString.toString();
@@ -140,7 +139,6 @@ public class XUser {
     }
 
     public void saveDomToXml() {
-
         System.out.println("saving...");
         File fileStr = new File(filePath);
         Result resultat = new StreamResult(fileStr);
@@ -166,6 +164,7 @@ public class XUser {
             System.out.println("Failed to save the file ex: " + e.getException());
             System.exit(1);
         }
+        
     }
 }
 

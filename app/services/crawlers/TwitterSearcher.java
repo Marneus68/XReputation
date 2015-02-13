@@ -2,17 +2,15 @@ package services.crawlers;
 import java.lang.String;
 import java.util.Arrays;
 import java.util.List;
-
 import net.sf.saxon.lib.NamespaceConstant;
-import net.sf.saxon.sxpath.XPathEvaluator;
 import org.apache.stanbol.enhancer.engines.htmlextractor.impl.DOMBuilder;
 import org.jsoup.Jsoup;
 import org.w3c.dom.Node;
 import play.libs.F;
-import play.libs.XPath;
 import play.libs.ws.*;
 import services.persons.XUser;
 import org.w3c.dom.NodeList;
+import services.xmlutilities.Xpath20;
 
 import javax.xml.xpath.*;
 
@@ -31,10 +29,10 @@ public class TwitterSearcher {
     }
 
     public static void parsetwitterHtml(String htmlUrl, XUser curUser){
+        System.setProperty("javax.xml.xpath.XPathFactory:"+ NamespaceConstant.OBJECT_MODEL_SAXON, "net.sf.saxon.xpath.XPathFactoryImpl");
         org.jsoup.nodes.Document html = Jsoup.parse(htmlUrl);
         String userTwitterLink  = curUser.twitter.substring(1, curUser.twitter.length() - 1);
         String xpathQuery =  "//a[matches(@href,'^/[A-Z]')]";
-        System.setProperty("javax.xml.xpath.XPathFactory:"+ NamespaceConstant.OBJECT_MODEL_SAXON, "net.sf.saxon.xpath.XPathFactoryImpl");
         XPathFactory xpf = null;
         XPathExpression expr = null;
         Object result = null;

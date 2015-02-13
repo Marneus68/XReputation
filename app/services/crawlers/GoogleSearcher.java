@@ -9,6 +9,9 @@ import play.libs.F;
 import play.libs.XPath;
 import play.libs.ws.*;
 import services.persons.XUser;
+import services.xmlutilities.Xpath20;
+
+import javax.xml.xpath.*;
 
 
 /**
@@ -20,11 +23,13 @@ public class GoogleSearcher {
      * Later implement async version
      */
 
-    public static  F.Function<WSResponse, List<String>> SearchOnGoogle(XUser curUser){
+    public static  F.Function<WSResponse, List<String>> SearchOnGoogle(XUser curUser ){
         return new F.Function<WSResponse, List<String>>(){
             @Override
             public List<String> apply(WSResponse response) throws Throwable {
-                return response.asJson().findValuesAsText("url");
+
+                List<String> tabUrls = response.asJson().findValuesAsText("url");
+                return tabUrls;
             }
         };
     }
@@ -33,6 +38,8 @@ public class GoogleSearcher {
         return new F.Function<WSResponse, String>(){
             @Override
             public String apply(WSResponse response) throws Throwable {
+
+                System.out.println("in google"+htmlUrl);
                 org.jsoup.nodes.Document html = Jsoup.parse(response.getBody());
                 String fb = curUser.facebook;
                 String tw = curUser.twitter;
@@ -40,18 +47,18 @@ public class GoogleSearcher {
                 boolean isSetFb = false;
                 boolean isSetTw = false;
                 boolean isSetLk = false;
-                System.out.println("in google");
                 String xpathQuery = "//a[contains(@href,'" + fb + "') or contains(@href,'" + tw + "') or contains(@href,'" + lk + "')]";
+                //String xpathQuery  = "//a[matches(@href,'*.("+fb+"|"+tw+"|"+lk+").*')]";
                 NodeList elements = null;
                 try {
                     elements = XPath.selectNodes(xpathQuery, DOMBuilder.jsoup2DOM(html));
                 }catch (Exception e){
                     System.out.println("parsing error"+e.getMessage());
-                    return "";
+                    return " ";
                 }
                 if(elements == null){
                     System.out.println("elements are null"+elements);
-                    return "";
+                    return " ";
                 }
                 for(int i =0; i < elements.getLength(); i++){
                     Node aTag = elements.item(i);

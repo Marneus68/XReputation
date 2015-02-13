@@ -18,5 +18,8 @@ libraryDependencies ++= Seq(
   "com.google.code.gson" % "gson" % "2.2",
   "org.jsoup" % "jsoup" % "1.8.1",
   "org.apache.stanbol" % "org.apache.stanbol.enhancer.engines.htmlextractor" % "0.12.0",
-  "net.sf.saxon" % "Saxon-HE" % "9.6.0-4"
+  "net.sf.saxon" % "Saxon-HE" % "9.6.0-4",
+  "com.ning" % "async-http-client" % "1.8.14"
 )
+
+javacOptions += "-Xlint:deprecation"
