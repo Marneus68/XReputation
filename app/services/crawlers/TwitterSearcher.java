@@ -32,7 +32,7 @@ public class TwitterSearcher {
         System.setProperty("javax.xml.xpath.XPathFactory:"+ NamespaceConstant.OBJECT_MODEL_SAXON, "net.sf.saxon.xpath.XPathFactoryImpl");
         org.jsoup.nodes.Document html = Jsoup.parse(htmlUrl);
         String userTwitterLink  = curUser.twitter.substring(1, curUser.twitter.length() - 1);
-        String xpathQuery =  "//a[matches(@href,'^/[A-Z]')]";
+        String xpathQuery =  "//a[not(contains(@href,'"+userTwitterLink+"')) and matches(@href,'(^/.*?)|(^http)') and not(contains(@href,upper-case('"+userTwitterLink+"')))]";
         XPathFactory xpf = null;
         XPathExpression expr = null;
         Object result = null;
@@ -51,7 +51,7 @@ public class TwitterSearcher {
             Node aTag = elements.item(i);
             String curLink = ((org.w3c.dom.Element)aTag).getAttribute("href");
             //remove duplicates in front api or try here
-            //System.out.println("twitter href "+curLink);
+            System.out.println("twitter href "+curLink);
             curUser.addRedirection("1", curLink);
             i++;
         }

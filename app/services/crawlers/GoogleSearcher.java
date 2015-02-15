@@ -1,5 +1,6 @@
 package services.crawlers;
 import java.lang.String;
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.stanbol.enhancer.engines.htmlextractor.impl.DOMBuilder;
 import org.jsoup.Jsoup;
@@ -28,6 +29,7 @@ public class GoogleSearcher {
             @Override
             public List<String> apply(WSResponse response) throws Throwable {
 
+                //System.out.println("in google json "+response.asJson());
                 List<String> tabUrls = response.asJson().findValuesAsText("url");
                 return tabUrls;
             }
@@ -39,19 +41,29 @@ public class GoogleSearcher {
             @Override
             public String apply(WSResponse response) throws Throwable {
 
-                System.out.println("in google"+htmlUrl);
+                System.out.println("in google "+htmlUrl);
                 org.jsoup.nodes.Document html = Jsoup.parse(response.getBody());
+                List<String> userLinks = new ArrayList<>();
                 String fb = curUser.facebook;
-                String tw = curUser.twitter;
                 String lk = curUser.linkedin;
-                boolean isSetFb = false;
-                boolean isSetTw = false;
-                boolean isSetLk = false;
-                String xpathQuery = "//a[contains(@href,'" + fb + "') or contains(@href,'" + tw + "') or contains(@href,'" + lk + "')]";
-                //String xpathQuery  = "//a[matches(@href,'*.("+fb+"|"+tw+"|"+lk+").*')]";
+                String cp = curUser.company;
+                boolean isSetFb = fb != null? !userLinks.add(fb):false;
+                boolean isSetLk = lk != null? !userLinks.add(lk):false;
+                boolean isSetCP = cp != null? !userLinks.add(cp):false;
+                // uses Xpath 1.0 see twitter for Xpath 2.0
+                StringBuilder xpathQuery = new StringBuilder("//a[");
+                int itr = 0;
+                for(String link: userLinks) {
+                    if(itr == 0)
+                        xpathQuery.append("contains(@href,'" + link + "')");
+                    else
+                        xpathQuery.append("or contains(@href,'" + link + "')");
+                    itr++;
+                }
+                xpathQuery.append("]");
                 NodeList elements = null;
                 try {
-                    elements = XPath.selectNodes(xpathQuery, DOMBuilder.jsoup2DOM(html));
+                    elements = XPath.selectNodes(xpathQuery.toString(), DOMBuilder.jsoup2DOM(html));
                 }catch (Exception e){
                     System.out.println("parsing error"+e.getMessage());
                     return " ";
@@ -64,13 +76,7 @@ public class GoogleSearcher {
                     Node aTag = elements.item(i);
                     String curLink = ((org.w3c.dom.Element)aTag).getAttribute("href");
                     System.out.println("element is "+ curLink);
-                    if(curLink.contains(tw) && !isSetTw) {
-                        curUser.addRedirection("1", htmlUrl);
-                        System.out.println("current link in html node " + ": " + curLink);
-                        //prevent duplicates
-                        isSetTw = true;
-                    }
-                    else if(curLink.contains(lk) && !isSetLk) {
+                    if(curLink.contains(lk) && !isSetLk) {
                         curUser.addRedirection("2", htmlUrl);
                         System.out.println("current link in html node " + ": " + curLink);
                         isSetLk = true;
@@ -79,6 +85,11 @@ public class GoogleSearcher {
                         curUser.addRedirection("3", htmlUrl);
                         System.out.println("current link in html node " + ": " + curLink);
                         isSetFb = true;
+                    }
+                    else if(curLink.contains(cp) && !isSetCP) {
+                        curUser.addRedirection("4", htmlUrl);
+                        System.out.println("current link in html node " + ": " + curLink);
+                        isSetCP = true;
                     }
                 }
                 return "GoogleParseDone";

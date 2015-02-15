@@ -7,5 +7,6 @@ GET     /ho                           controllers.Application.index()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /reputation/user            controllers.Application.user()
 
 POST    /reputation                controllers.Application.postForm()

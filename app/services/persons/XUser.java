@@ -17,6 +17,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.SchemaFactory;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
@@ -30,6 +32,7 @@ public class XUser {
     public String twitter;
     public String facebook;
     public String linkedin;
+    public String company;
     private Document xmlTree;
     private String filePath = "public/res/person.xml";
     private DocumentBuilderFactory factory;
@@ -37,25 +40,48 @@ public class XUser {
     private Document doc;
     private Element redirects;
 
-    public void xmlToDoc(String filename) throws Exception {
-        factory = DocumentBuilderFactory.newInstance();
-        db = factory.newDocumentBuilder();
-        doc = db.parse(new File(this.filePath));
+    public void xmlToDoc(String xsdFile) {
+        DocumentBuilderFactory tmpFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder db = null ;
+        // xsd checking in coming
+        tmpFactory.setValidating(false);
+        tmpFactory.setNamespaceAware(false);
 
+       // SchemaFactory schemaFactory = SchemaFactory.newInstance("http://www.w3.org/2001/XMLSchema");
+        try {
+
+            //factory.setSchema(schemaFactory.newSchema(new Source[] {new StreamSource(xsdFile)}));
+
+            db = tmpFactory.newDocumentBuilder();
+
+            db.setErrorHandler(new ErrorHandler() {
+
+                public void warning(SAXParseException warn) throws SAXException {
+                    System.out.println("Warnning error: "+warn);
+                }
+
+                public void fatalError(SAXParseException fatal) throws SAXException {
+                    System.out.println("Warnning error: "+fatal);
+                }
+
+                public void error(SAXParseException error) throws SAXException {
+                    System.out.println("Warnning error: "+error);
+                }
+            });
+
+            doc = db.parse(filePath);
+            redirects = (Element) doc.getElementsByTagName("redirects").item(0);
+            firstName = doc.getElementsByTagName("firstName").item(0).getTextContent();
+            lastName = doc.getElementsByTagName("lastName").item(0).getTextContent();
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
     }
 
     public  void createXmlDom() throws ParserConfigurationException {
         factory = DocumentBuilderFactory.newInstance();
         db = factory.newDocumentBuilder();
         doc = db.newDocument();
-    }
-
-    public void loadDom(){
-        try{
-            xmlToDoc(filePath);
-        }catch (Exception fileExp){
-            System.err.println("file not exist"+ fileExp.getMessage());
-        }
     }
 
     public String jsonUser(){
@@ -119,11 +145,17 @@ public class XUser {
         facebookL.setAttribute("ID", "3");
         facebookL.setAttribute("name", "facebook");
 
+        Element companyL= doc.createElement("link");
+        companyL.setTextContent(company);
+        companyL.setAttribute("ID", "4");
+        companyL.setAttribute("name", "company");
+
         root.appendChild(fName);
         root.appendChild(lName);
+        root.appendChild(facebookL);
         root.appendChild(twitterL);
         root.appendChild(linkedinL);
-        root.appendChild(facebookL);
+        root.appendChild(companyL);
         redirects = doc.createElement("redirects");
         root.appendChild(redirects);
         doc.appendChild(root);

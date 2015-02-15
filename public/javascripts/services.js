@@ -3,25 +3,36 @@ angular.module('XR.services', ['ngResource'])
 .factory('Reputation', function($resource) {
   return $resource("http://localhost:9000" + '/reputation?v' + new Date().getTime());
 })
+.factory('User', function($resource) {
+  return $resource("http://localhost:9000" + '/reputation/user?v' + new Date().getTime());
+})
 .factory('peopleGraph', [ '$q', function( $q ){
   var cy;
-  var peopleGraph = function(people){
+  var peopleGraph = function(people, data){
     var deferred = $q.defer();
 
     // put people model in cy.js
     var eles = [];
     var links = people.links.concat(people.redirects);
-    console.log(links);
+    console.log(data);
 
-    for( var i = 0; i < links.length; i++ ){
-      eles.push({group: 'nodes', data: { id: links[i].value,  weight: 100, name: links[i].value, faveShape:'rectangle' }, classes:'ok'});
+    // set root
+    eles.push({ group: 'nodes', data: { id:"0", name: data.firstName, weight: 200, faveShape: 'rectangle' }, classes: 'root' });
+
+    for( var i = 0; i < people.links.length; i++ ){
+      eles.push({group: 'nodes', data: { id: links[i].value,  weight: 100, name: links[i].value, faveShape:'rectangle' }, classes:'ko'});
+      eles.push({group: 'edges', data: {source:links[i].value, target:"0" }});
+    }
+    for( var i = 0; i < people.redirects.length; i++ ){
+      eles.push({group: 'nodes', data: { id: people.redirects[i].value,  weight: 100, name: people.redirects[i].value, faveShape:'rectangle' }, classes:'ok'});
     }
 
     var redirects =  people.redirects;
-      var target = {"1":people.links[0].value, "2":people.links[1].value, "3":people.links[2].value};
+      var target = {"1":data.twitter, "2":data.facebook, "3":data.linkedin, "4":data.company};
     for(var i = 0; i < redirects.length; i++){
       eles.push({group: 'edges', data: {source:redirects[i].value, target:target[redirects[i].id] }});
     }
+    //links to root
 
 /*
       eles.push({group: 'nodes', data: { id: people[1].id,  weight: people[1].weight, name: people[1].name, faveShape:'circle' }, classes:'ok'});
@@ -113,7 +124,7 @@ eles.push({group: 'edges', data: {source:people[2].id,target:people[0].id }});
                   ready: undefined, // callback on layoutready
                   stop: undefined, // callback on layoutstop
                   maxSimulationTime: 20000, // max length in ms to run the layout
-                  fit: true, // reset viewport to fit default simulationBounds
+                  fit: false, // reset viewport to fit default simulationBounds
                   padding: [ 50, 50, 50, 50 ], // top, right, bottom, left
                   simulationBounds: undefined, // [x1, y1, x2, y2]; [0, 0, width, height] by default
                   ungrabifyWhileSimulating: true, // so you can't drag nodes during layout
@@ -134,7 +145,8 @@ eles.push({group: 'edges', data: {source:people[2].id,target:people[0].id }});
                   stableEnergy: function( energy ){
                     var e = energy;
                     return (e.max <= 0.5) || (e.mean <= 0.3);
-                  }
+                  },
+                  infinite: false
                 },
         elements: eles,
 
@@ -163,7 +175,7 @@ eles.push({group: 'edges', data: {source:people[2].id,target:people[0].id }});
                        //$('#links-boutique-lacoste-fr')
 
                      });
-                   });
+                  });
 
     }); // on dom ready
 

@@ -18,7 +18,15 @@ import java.util.List;
 public class Application extends Controller {
 
     public static Result index() {
-        return ok(index.render("use a bitch"));
+        XUser userInfo = new XUser();
+        userInfo.xmlToDoc("xsdFile");
+        return ok(index.render("Xreputation"));
+    }
+
+    public static Result user() {
+        XUser userInfo = new XUser();
+        userInfo.xmlToDoc("xsdFile");
+        return ok(play.libs.Json.parse(userInfo.jsonUser()));
     }
 
     public static F.Promise<Result> postForm() {
@@ -32,7 +40,7 @@ public class Application extends Controller {
             userInfo.createXmlDom();
             encode_query1 = URLEncoder.encode(userInfo.firstName+" "+userInfo.lastName, "UTF-8");
             encode_query2 = URLEncoder.encode(userInfo.facebook, "UTF-8");
-            encode_query3 = URLEncoder.encode(userInfo.twitter, "UTF-8");
+            encode_query3 = URLEncoder.encode(userInfo.company, "UTF-8");
             encode_query4 = URLEncoder.encode(userInfo.linkedin, "UTF-8");
         }catch(Exception e){
             System.out.println("Exception Xml utils or url Encoder: " + e.getCause());
