@@ -132,22 +132,22 @@ public class XUser {
 
         Element twitterL = doc.createElement("link");
         twitterL.setTextContent(twitter);
-        twitterL.setAttribute("ID", "1");
+        twitterL.setAttribute("ID", "l1");
         twitterL.setAttribute("name", "twitter");
 
         Element linkedinL = doc.createElement("link");
         linkedinL.setTextContent(linkedin);
-        linkedinL.setAttribute("ID", "2");
+        linkedinL.setAttribute("ID", "l2");
         linkedinL.setAttribute("name", "linkedin");
 
         Element facebookL = doc.createElement("link");
         facebookL.setTextContent(facebook);
-        facebookL.setAttribute("ID", "3");
+        facebookL.setAttribute("ID", "l3");
         facebookL.setAttribute("name", "facebook");
 
         Element companyL= doc.createElement("link");
         companyL.setTextContent(company);
-        companyL.setAttribute("ID", "4");
+        companyL.setAttribute("ID", "l4");
         companyL.setAttribute("name", "company");
 
         root.appendChild(fName);

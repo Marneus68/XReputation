@@ -52,7 +52,7 @@ public class TwitterSearcher {
             String curLink = ((org.w3c.dom.Element)aTag).getAttribute("href");
             //remove duplicates in front api or try here
             System.out.println("twitter href "+curLink);
-            curUser.addRedirection("1", curLink);
+            curUser.addRedirection("l1", curLink);
             i++;
         }
     }

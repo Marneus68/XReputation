@@ -78,17 +78,17 @@ public class GoogleSearcher {
                     String curLink = ((org.w3c.dom.Element)aTag).getAttribute("href");
                     System.out.println("element is "+ curLink);
                     if(curLink.contains(lk) && !isSetLk) {
-                        curUser.addRedirection("2", htmlUrl);
+                        curUser.addRedirection("l2", htmlUrl);
                         System.out.println("current link in html node " + ": " + curLink);
                         isSetLk = true;
                     }
                     else if(curLink.contains(fb) && !isSetFb) {
-                        curUser.addRedirection("3", htmlUrl);
+                        curUser.addRedirection("l3", htmlUrl);
                         System.out.println("current link in html node " + ": " + curLink);
                         isSetFb = true;
                     }
                     else if(curLink.contains(cp) && !isSetCP) {
-                        curUser.addRedirection("4", htmlUrl);
+                        curUser.addRedirection("l4", htmlUrl);
                         System.out.println("current link in html node " + ": " + curLink);
                         isSetCP = true;
                     }

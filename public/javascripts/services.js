@@ -28,7 +28,7 @@ angular.module('XR.services', ['ngResource'])
     }
 
     var redirects =  people.redirects;
-      var target = {"1":data.twitter, "2":data.facebook, "3":data.linkedin, "4":data.company};
+      var target = {"l1":data.twitter, "l2":data.facebook, "l3":data.linkedin, "l4":data.company};
     for(var i = 0; i < redirects.length; i++){
       eles.push({group: 'edges', data: {source:redirects[i].value, target:target[redirects[i].id] }});
     }
