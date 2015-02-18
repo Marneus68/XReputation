@@ -1,10 +1,10 @@
 
 angular.module('XR.services', ['ngResource'])
 .factory('Reputation', function($resource) {
-  return $resource("http://localhost:9000" + '/reputation?v' + new Date().getTime());
+  return $resource("http://localhost:7000" + '/reputation?v' + new Date().getTime());
 })
 .factory('User', function($resource) {
-  return $resource("http://localhost:9000" + '/reputation/user?v' + new Date().getTime());
+  return $resource("http://localhost:7000" + '/reputation/user?v' + new Date().getTime());
 })
 .factory('peopleGraph', [ '$q', function( $q ){
   var cy;
