@@ -47,9 +47,9 @@ public class GoogleSearcher {
                 String fb = curUser.facebook;
                 String lk = curUser.linkedin;
                 String cp = curUser.company;
-                boolean isSetFb = fb != null? !userLinks.add(fb):false;
-                boolean isSetLk = lk != null? !userLinks.add(lk):false;
-                boolean isSetCP = cp != null? !userLinks.add(cp):false;
+                boolean isSetFb = fb != null? !userLinks.add(fb):true;
+                boolean isSetLk = lk != null? !userLinks.add(lk):true;
+                boolean isSetCP = cp != null? !userLinks.add(cp):true;
                 // uses Xpath 1.0 see twitter for Xpath 2.0
                 StringBuilder xpathQuery = new StringBuilder("//a[");
                 int itr = 0;
@@ -72,6 +72,7 @@ public class GoogleSearcher {
                     System.out.println("elements are null"+elements);
                     return " ";
                 }
+                // damien duplicate remove url to refactor can have xx/1 and xx/2
                 for(int i =0; i < elements.getLength(); i++){
                     Node aTag = elements.item(i);
                     String curLink = ((org.w3c.dom.Element)aTag).getAttribute("href");
